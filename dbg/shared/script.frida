@@ -1,0 +1,3 @@
+Java.perform(() => {
+    console.log("Hello from Frida !");
+});

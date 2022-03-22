@@ -1,0 +1,67 @@
+# PRESETS
+
+# Command Execution
+echo "* RCE"
+add_breakpoint java.lang.Runtime exec
+
+# File Handling
+echo "* File Handling"
+add_breakpoint javax.servlet.jsp.JspWriter.write
+
+# Input Tracking
+echo "* Input Tracking"
+add_breakpoint tomcat.util.net.NioBufferHandler getReadBuffer
+add_breakpoint org.apache.catalina.connector.Request getStream
+add_breakpoint javax.servlet.http.Part getHeaderNames
+add_breakpoint org.eclipse.jetty.server.Request getReader
+
+# # JQL Query Parser
+# echo "* JQL"
+# add_breakpoint com.atlassian.jira.jql.parser.JqlQueryParser
+
+# SQL Query
+echo "* SQLi"
+add_breakpoint java.sql.Statement executeQuery
+add_breakpoint com.mysql.jdbc.StatementImpl executeQuery
+add_breakpoint org.hibernate.Session createSQLQuery
+
+# SSRF
+echo "* SSRF"
+add_breakpoint java.net.URL openConnection
+
+# Deserialization
+echo "* Deserialization"
+add_breakpoint java.io.ObjectOutputStream writeObject
+add_breakpoint java.io.ObjectOutputStream writeObjectOverride
+add_breakpoint java.io.ObjectInputStream readObject
+add_breakpoint java.io.ObjectInputStream readObjectOverride
+add_breakpoint java.io.ObjectInputStream defaultReadObject
+
+# # Velocity ??
+# echo "* Velocity"
+# add_breakpoint com.atlassian.jira.util.JiraVelocityHelper
+# add_breakpoint com.atlassian.jira.util.JiraVelocityUtils
+# add_breakpoint com.atlassian.jira.template.VelocityTemplatingEngine.RenderRequest
+
+# XXE
+echo "* XXE"
+add_breakpoint javax.xml.bind.Unmarshaller unmarshal
+add_breakpoint javax.xml.stream.XMLInputFactory
+# add_breakpoint javax.xml.transform.TransformerFactory newTransformer
+add_breakpoint javax.xml.validation.SchemaFactory newSchema
+# add_breakpoint javax.xml.parsers.SAXParserFactory
+add_breakpoint javax.xml.parsers.SAXParser parse
+# add_breakpoint org.xml.sax.XMLReader parse
+add_breakpoint org.dom4j.io.SAXReader read
+# add_breakpoint javax.xml.xpath.XPathExpression evaluate
+add_breakpoint javax.xml.validation.Validator
+add_breakpoint org.jdom2.input.SAXBuilder
+add_breakpoint java.beans.XMLDecoder
+
+
+
+
+
+
+# USER TWEAKS
+# Add your commands here
